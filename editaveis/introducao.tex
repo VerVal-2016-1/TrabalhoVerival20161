@@ -4,15 +4,38 @@ Esse capítulo apresenta o problema que o trabalho busca solucionar através dos
 
 \section{Problema}
 
+Com a utilização do framework CodeIgniter, percebeu-se que o mesmo possui uma estrutura de testes muito precária, contando
+apenas com uma classe de testes unitários com poucos recursos, sem a possibilidade de testes de integração. No mundo do PHP,
+um dos frameworks de testes mais utilizados é o PHPUnit, que oferece diversos recursos para testes unitários e de integração.
+Além disso, por ser um framework de testes bastante utilizado pela comunidade, o PHPUnit é suportado na maioria de ferramentas
+de integração contínua, o que favorece ainda mais a sua utilização. Porém, o CodeIgniter não oferece suporte nativo ao PHPUnit
+e existem algumas peculiaridades do CodeIgniter que devem ser levadas em conta, o que dificulta o uso do PHPUnit no CodeIgniter.
+
+Essa deficiência em testes do framework compromete a qualidade dos sistemas que o utilizam,
+como o Sistema Integrado de Gestão Acadêmica (SiGA). Portanto, a questão de pesquisa que dirige este trabalho é:
+
+\textit{Como adequar o PHPUnit para uso no CodeIgniter?}
   
 \section{Objetivos}
 
-  Nesta seção são apresentados os objetivos, geral e específicos, do trabalho definidos a fim de responder a questão de pesquisa definida.
+  Nesta seção são apresentados os objetivos geral e específicos do trabalho definidos a fim de responder a
+  questão de pesquisa definida.
 
 \subsection{Objetivo Geral}
 
+O objetivo geral deste trabalho é elaborar um framework básico de testes para o CodeIgniter utilizando o PHPUnit, com suporte a 
+testes unitários e de integração.
 
 \subsection{Objetivos Específicos}
+
+São objetivos específicos deste trabalho:
+
+\begin{itemize}
+ \item Adaptar o CodeIgniter para utilizar o PHPUnit;
+ \item Adequar o PHPUnit para uso no CodeIgniter;
+ \item Levantar features do framework de testes, com base nas necessidades do CodeIgniter;
+ \item Avaliar o framework de testes criado, aplicando-o no SiGA.
+\end{itemize}
 
 
 \section{Metodologia}
@@ -24,4 +47,3 @@ Esse capítulo apresenta o problema que o trabalho busca solucionar através dos
 Como resultado é esperado um \textit{framework} básico de testes para ser utilizado no \textit{framework} CodeIgniter, que contemple
 testes unitários e testes de integração. Com a utilização da pesquisa-ação também é esperado que o \textit{framework} seja realmente adequado
 ao CodeIgniter. 
-
