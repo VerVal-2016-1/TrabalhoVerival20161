@@ -2,6 +2,92 @@
 
 Neste capítulo são apresentados os resultados do diagnóstico realizado.
 
+\section{O \textit{framework} de testes PHPUnit}
+
+  O PHPUnit\footnotemark  é um \textit{framework} de testes para PHP bastante completo e com suporte adequado
+  da comunidade. A versão estável mais atual é a 5.3, podendo ser instalado utilizando o gerenciador
+  de dependências \textit{Composer}. As configurações são realizadas por meio de um arquivo XML que é 
+  executado antes dos testes.
+  \footnotetext{Informações retiradas do Manual do PHPUnit. Disponível em \url{https://phpunit.de/}. Acesso em 22/05/2016.}
+  
+  Largamente utilizado pela comunidade PHP, o PHPUnit oferece recursos de testes unitários até
+  testes funcionais. Como o foco deste trabalho consiste em testes unitários e de integração, serão
+  apresentados os recursos do \textit{framework} que possam ser utilizados nesses níveis de teste.
+  
+  \subsection{Convenções}
+    
+    O PHPUnit segue algumas convenções, que são apresentadas logo abaixo.
+    
+    \begin{itemize}
+      \item As classes de teste devem ser sufixadas com \textit{'Test'};
+      
+      \item As classes de teste geralmente herdam da classe base \textit{'PHPUnit\_Framework\_TestCase'};
+      
+      \item Os testes devem ser métodos públicos prefixados com \textit{'test'}.
+    \end{itemize}
+
+  
+  \subsection{Recursos gerais}
+  
+    A seguir são listados alguns recursos gerais do \textit{framework}:
+    
+    \begin{itemize}
+      \item Suporte à anotações \footnotemark ;
+	\footnotetext{Apêndice de anotações do PHPUnit. Disponível em \url{https://phpunit.de/manual/current/pt\_br/appendixes.annotations.html}.
+		      Acesso em 22/05/2016.}
+		      
+      \item Completa biblioteca de assertivas com a possibilidade de customização;
+	
+      \item Declaração explícita de dependência entre testes (dizer que um método teste depende do retorno de outro);
+      
+      \item Métodos provedores de dados para outros testes;
+      
+      \item Converter erros e avisos do PHP para exceções tratáveis no teste;
+      
+      \item Teste de saídas (\textit{'echo'} e \textit{'print'});
+	\subitem Útil para testar resultados retornados via ajax.
+	
+      \item Suporte à linha de comando;
+      
+      \item \textit{Fixtures};
+      
+      \item Composição de suíte de testes;
+      
+      \item Possibilidade de definir o tempo máximo de execução do teste;
+      
+      \item Possibilidade de marcar testes como incompletos;
+      
+      \item Extensão \textit{DbUnit} para automatizar testes com banco de dados. Oferece:
+	\begin{itemize}
+	 \item Toda a estrutura para manter o banco de dados de testes, com funções para conexão
+		com o banco, assertivas específicas, definição de \textit{datasets}, preparação
+		e destruição do ambiente de teste, entre outros;
+	 \item Suporte a diferentes tipos de \textit{datasets}(FlatXML, XML, YAML, CSV).
+	\end{itemize}
+      
+      \item Suporte a \textit{Mocking} com \textit{Stubs};
+	\subitem Possibilidade de utilização do \textit{framework} Prophecy \footnotemark para realizar Mock.
+	  \footnotetext{\textit{Prophecy Mocking Framework}. Disponível em \url{https://github.com/phpspec/prophecy}. Acesso em 22/05/2016.}
+	
+      \item Cobertura de código altamente configurável e com métricas;
+	 \subitem Relatório de cobertura de código em XML, HTML ou TEXT.
+      
+      \item \textit{Logging} dos resultados em diferentes formatos configuráveis (XML, TAP, JSON);
+      
+      \item Alta extensibilidade.
+	\subitem É possível criar classes base de teste específicas, o que pode ser bastante útil para utilizar com o CodeIgniter.
+    \end{itemize}
+    
+  \subsection{Problemas encontrados com os recursos disponíveis}
+    
+    As funcionalidades oferecidas pela extensão \textit{DbUnit} são bastante completas e atenderiam bem às necessidades
+    para um teste de integração.
+    Entretanto, além do \textit{DbUnit} não subir a mesma estrutura do banco da aplicação para o banco de teste,
+    o que tem que ser realizado a parte dos testes, o \textit{DbUnit} oferecido pelo PHPUnit utiliza a abstração PDO para
+    criar uma conexão direta com o banco de dados, enquanto a conexão com o banco de dados é encapsulada dentro do CodeIgniter,
+    o que impossibilita o uso direto do \textit{DbUnit} no CodeIgniter para realizar os testes de integração que necessitem de
+    acesso ao banco de dados.
+    
 \section{\textit{Features} do \textit{framework}}
 
 \begin{itemize}
