@@ -2,6 +2,72 @@
 
 Neste capítulo são apresentados os resultados do diagnóstico realizado.
 
+    
+\section{Testes no CodeIgniter}
+
+O \textit{framework} CodeIgniter\footnotemark possui uma classe de testes que dispõe de uma função de avaliação
+e duas funções de resultado. 
+\footnotetext{Informações retiradas do Manual do CodeIgniter. Disponível em \url{http://www.codeigniter.com/user_guide/libraries/unit_testing.html}. Acesso em 22/05/2016.}
+
+Para realizar um teste deve-se executar o comando \textit{\$this->unit->run} passando como parâmetro
+o que se deseja testar, o resultado esperado, o nome do teste, e alguma nota (texto) associada, respectivamente.
+
+A classe provê alguns tipos de comparação pré-definidos para serem colocados como o resultado esperado. São eles:
+
+\begin{table*}[!h]
+\caption{Tipos de comparação da classe de testes}
+\label{table:tipos_comparacao}
+\centering
+\begin{tabular}{|p{0.25\linewidth}|p{0.25\linewidth}|}
+  \hline
+  \multicolumn{2}{|c|}{\textbf{Tipos}} \\
+  \hline			
+	is\_object & is\_string \\
+  \hline
+	is\_bool &	is\_true \\
+  \hline
+	is\_false & is\_int \\
+  \hline
+	is\_numeric & is\_float \\
+  \hline
+	is\_double & is\_array \\
+  \hline
+	is\_null &	is\_resource \\
+  \hline
+  \end{tabular}
+\end{table*}
+
+Para obter um relatório completo sobre os testes o comando a ser executado é \textit{\$this->unit->report}, 
+o relatório é obtido no formato HTML. Para o resultado completo sem formatação a palavra \textit{report} deve ser
+substituida por \textit{result}.
+
+Para cada teste do relatório são apresentados o nome do teste, o tipo de dado do teste, o tipo de 
+dado do resultado esperado, o resultado, o nome do arquivo, o número da linha e as notas associadas.
+Um exemplo deste relatório pode ser visto na figura \ref{fig:relatorio_codeigniter}.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.7]{figuras/relatorio_codeigniter.png}
+\caption{Relatório de teste do CodeIgniter}
+\label{fig:relatorio_codeigniter}
+\end{figure}
+
+Na figura \ref{fig:fluxo_codeigniter} é apresentado o fluxo seguido para realização de testes de uma classe no CodeIgniter.
+
+\begin{figure}[!h]
+\centering
+\includegraphics[scale=0.7]{figuras/fluxo_codeigniter.png}
+\caption{Fluxo de criação de teste do CodeIgniter}
+\label{fig:fluxo_codeigniter}
+\end{figure}
+
+Observando o fluxo de criação e execução de testes no CodeIgniter é possível perceber que é uma classe simples que não provê muitos recursos. Além disso a execução dos testes é pouco automatizada, visto que é necessário chamar cada método
+de teste escrito. 
+
+\vfill
+\pagebreak
+
+
 \section{O \textit{framework} de testes PHPUnit}
 
   O PHPUnit\footnotemark  é um \textit{framework} de testes para PHP bastante completo e com suporte adequado
@@ -87,8 +153,9 @@ Neste capítulo são apresentados os resultados do diagnóstico realizado.
     criar uma conexão direta com o banco de dados, enquanto a conexão com o banco de dados é encapsulada dentro do CodeIgniter,
     o que impossibilita o uso direto do \textit{DbUnit} no CodeIgniter para realizar os testes de integração que necessitem de
     acesso ao banco de dados.
-    
-\section{\textit{Features} do \textit{framework}}
+
+
+\section{Possíveis \textit{Features} do \textit{framework}}
 
 \begin{itemize}
 
@@ -105,3 +172,8 @@ Neste capítulo são apresentados os resultados do diagnóstico realizado.
 	\item Fazer \textit{mock}
 
 \end{itemize}
+
+\section{\textit{Features} selecionadas}
+
+Como escopo deste trabalho serão implementadas somente as \textit{features}: Classe base para teste unitário
+e Classe base para teste de integração controller-model.
