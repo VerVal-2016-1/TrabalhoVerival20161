@@ -1,32 +1,58 @@
 \chapter{Referencial Teórico}
-Para realizar o levantamento do referencial teórico será utilizado a técnica de revisão de literatura.
-Segundo \citeonline{revisao_de_literatura}, uma revisão de literatura comporta uma parte muito importante no processo de investigação, 
-uma vez estabelecida por localizar, analisar, sintetizar e interpretar a investigação prévia referente a uma área de estudo. 
-Além disso, uma boa revisão de literatura auxilia no entendimento de um problema e desenvolvimento dos conhecimentos, 
-conforme \apudonline{livro_sistematizacao_conhecimento}{revisao_de_literatura}, “cada investigador analisa minuciosamente os trabalhos dos investigadores 
-que o precederam e, só então, compreendido o testemunho que lhe foi confiado, parte equipado para a sua própria aventura”, 
-ou seja, ao se iniciar o processo de revisão de literatura raramente não existirão assuntos abordados no passado, sobre o 
-mesmo tema ou similares, que auxiliarão como fonte de conhecimento para a atual pesquisa.
 
-Novamente, segundo \citeonline{revisao_de_literatura}, os propósitos da revisão de literatura num estudo de investigação são:
+\section{Metodologia Utilizada}
+    Para realizar o levantamento do referencial teórico será utilizado a técnica de revisão de literatura.
+    Segundo \citeonline{revisao_de_literatura}, uma revisão de literatura comporta uma parte muito importante no processo de investigação, 
+    uma vez estabelecida por localizar, analisar, sintetizar e interpretar a investigação prévia referente a uma área de estudo. 
+    Além disso, uma boa revisão de literatura auxilia no entendimento de um problema e desenvolvimento dos conhecimentos, 
+    conforme \apudonline{livro_sistematizacao_conhecimento}{revisao_de_literatura}, “cada investigador analisa minuciosamente os trabalhos dos investigadores 
+    que o precederam e, só então, compreendido o testemunho que lhe foi confiado, parte equipado para a sua própria aventura”, 
+    ou seja, ao se iniciar o processo de revisão de literatura raramente não existirão assuntos abordados no passado, sobre o 
+    mesmo tema ou similares, que auxiliarão como fonte de conhecimento para a atual pesquisa.
 
-\begin{itemize}
- 
-	\item \textbf{Delimitar o problema de investigação:} formular uma definição concreta sobre o que será investigado visando não comprometer todo o trabalho com problemas mal delimitados.
-	\item \textbf{Procurar novas linhas de investigação:} consiste em entender o que já foi realizado sobre um determinado problema e buscar pelas suas áreas que ainda não foram ou foram pouco exploradas.
-	\item \textbf{Evitar abordagens infrutíferas:} buscar que as linhas de investigação definidas sejam proveitosas e possuam resultados significativos.
-	\item \textbf{Ganhar perspectivas metodológicas:} não rever apenas os resultados do estudo, mas sim, realizar uma leitura geral sobre todos os tópicos abordados.
-	\item \textbf{Identificar recomendações para investigações futuras:} após finalizado o estudo, identificar novas questões e sugestões para investigações futuras.
+    Novamente, segundo \citeonline{revisao_de_literatura}, os propósitos da revisão de literatura num estudo de investigação são:
 
-\end{itemize}
+    \begin{itemize}
 
-Para este trabalho o propósito da revisão será ganhar perspectivas metodológicas e desta forma contemplará os conceitos de:
+        \item \textbf{Delimitar o problema de investigação:} formular uma definição concreta sobre o que será investigado visando não comprometer todo o trabalho com problemas mal delimitados;
+        \item \textbf{Procurar novas linhas de investigação:} consiste em entender o que já foi realizado sobre um determinado problema e buscar pelas suas áreas que ainda não foram ou foram pouco exploradas;
+        \item \textbf{Evitar abordagens infrutíferas:} buscar que as linhas de investigação definidas sejam proveitosas e possuam resultados significativos;
+        \item \textbf{Ganhar perspectivas metodológicas:} não rever apenas os resultados do estudo, mas sim, realizar uma leitura geral sobre todos os tópicos abordados;
+        \item \textbf{Identificar recomendações para investigações futuras:} após finalizado o estudo, identificar novas questões e sugestões para investigações futuras.
 
-\begin{itemize}
+    \end{itemize}
 
-	\item Testes unitarios
-	\item Testes de integração
-	\item \textit{Framework} de testes
-	
-\end{itemize}
+\vfill
+\pagebreak
 
+    Para este trabalho o propósito da revisão será ganhar perspectivas metodológicas e desta forma contemplará os conceitos de:
+
+    \begin{itemize}
+
+        \item Testes Unitários;
+        \item Testes de Integração;
+        \item \textit{Framework} de Testes.
+
+    \end{itemize}
+
+
+\section{Teste de \textit{Software}}
+    Teste de \textit{software} é o processo de execução de um produto para averiguar se ele atingiu suas especificações e funciona corretamente em seu ambiente alvo. \citeonline{artigo_intro_teste}
+
+    De acordo com \citeonline{sw_test_tech}, um bom teste é o que possui uma alta probabilidade de encontrar um erro ainda não descoberto e um teste bem sucedido é o que de fato descobre erros desconhecidos.
+
+    Esses testes são estruturados em níveis, cada um com um determinado objetivo dentro do conjunto de testes, de modo a garantir a qualidade do produto em desenvolvimento. \citeonline{sw_test_tech}
+
+    Conforme já mencionado, tendo em foco a proposta deste trabalho, serão melhores abordados os testes em seus níveis unitários e de integração.
+
+    \subsection{Testes Unitários}
+        Possui como objetivo verificar a existência de defeitos em cada módulo do projeto. Seu alvo são os métodos desenvolvidos ou pequenos trechos específicos de código. \citeonline{artigo_intro_teste}
+        
+        É realizado durante o desenvolvimento, pelo próprio desenvolvedor, pois testa a unidade básica de \textit{software}, que é o menor "pedaço"  testável, por sua vez chamado de unidade, dando origem ao nome deste tipo de teste. \citeonline{sw_test_tech}
+        
+        Um exemplo de objetivo do teste unitário é a procura pela identificação de erros de lógica e de implementação. \citeonline{maldonado}
+
+    \subsection{Testes de Integração}
+        Possui como objetivo averiguar a existência de falhas relacionadas a interface do \textit{software} entre seus diferentes módulos quando estes são integrados. \citeonline{artigo_intro_teste}
+        
+        É realizado quando uma estrutura maior é formada (devido a integração de dois ou mais módulos), sendo que os módulos possuem suas especificações individuais testadas, porém olhando-se para o conjunto. \citeonline{sw_test_tech} A medida que essas estruturas vão sendo testadas, a estrutura de programa que foi determinada pelo projeto vai sendo construída. \citeonline{maldonado}
