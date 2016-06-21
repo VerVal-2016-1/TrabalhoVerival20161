@@ -68,14 +68,24 @@
       
 	  Para o contexto proposto, onde existirão vários comandos que possuem comportamentos únicos e bem definidos que serão
 	  invocados pela linha de comando, a arquitetura definida se baseia no padrão de projeto \textit{Command} \cite{gamma}
-	  com a adição de classes \textit{experts} (padrão GRASP) de metadados para cada comando.
-	  
+	  com a adição de classes \textit{experts} (padrão GRASP) de metadados para cada comando, como pode ser visto na
+	  figura \ref{ignitest-architecture}.
+	   
 	  As classes filhas da classe \textit{Command} representam um comando específico do \textit{framework} que possui sua 
 	  própria implementação de execução. Cada comando possui uma classe de metadados associada a ele para descrever suas
-	  informações, onde essa classe deve herdar da classe \textit{Metadata}. Os comandos informados pela linha de comando
+	  informações, onde essa classe deve herdar da classe \textit{Metadata}. Os comandos informados pela linha de comando (CLI)
 	  são interpretados pela classe \textit{CommandChecker}, que verifica os comandos informados, cria as instâncias respectivas
 	  e adiciona os comandos na fila de execução. Os comandos disponíveis no \textit{framework} devem ser registrados na classe
 	  \textit{AvailableCommand} para que seja possível a classe \textit{CommandChecker} identificar os comandos informados.
+	  
+	  \vfill
+	  \pagebreak
+	  \begin{figure}[!htb]
+	    \centering
+	    \includegraphics[scale=0.35]{figuras/ignitest-architecture.png}
+	    \caption{Arquitetura do \textit{framework} proposto.}
+	    \label{ignitest-architecture}
+	  \end{figure}
       
       \subsection{Configurações}
 	  
@@ -105,9 +115,12 @@
 		);
 	      \end{lstlisting}
 	   
-	   \item Criar a seguinte classe no diretório '\textbf{/application/hooks/}':
+	   \item Criar a seguinte classe no diretório '\textbf{/application/hooks/}' sob o nome '\textbf{DisplayHook.php}':
 	  
 	  \begin{lstlisting}
+	  
+	      <?php
+	      
 	      class DisplayHook {
 	          public function captureOutput() {
 
