@@ -158,8 +158,42 @@
       \end{itemize}
 
   \section{Avaliação dos resultados}
-  
+      Esta seção descreve os resultados das avaliações de configurações e arquitetura propostas, bem como pontos a serem melhorados.
+
+      \subsection{Avaliação das configurações}
+      
+	  Ao tentar aplicar as configurações propostas em um novo projeto do CodeIgniter, ocorreram alguns erros referentes
+	  à configuração do PHPUnit com o CodeIgniter, as quais foram sanadas da seguinte forma:
+	  
+	  \begin{itemize}
+
+	    \item Configuração de protocolo URI: o protocolo em questão não pode ser automático, assim, foi necessário modificá-lo para
+	    o tipo "REQUEST\_URI".
+	    
+	    \item Classe CI\_Utf8: era necessário carregar as configurações do CodeIgniter ao inicializar a classe.
+
+	  \end{itemize}
+	  
+	  No sistema SiGA foram identificados os mesmos erros referentes às configurações.
+      
+      \subsection{Avaliação da arquitetura}
+	  Percebeu-se que a arquitetura do \textit{framework} foi bem estrutura com o uso do padrão de projeto \textit{Command}, 
+	  uma vez que facilmente é possivel criar novos comandos definindo-se uma classe para o mesmo e adicionando-o aos comandos
+	  existentes.
+	  
+	  A criação de um comando com parâmetros diferentes foi identificada e possível graças aos metadados vinculados ao mesmo, 
+	  os quais podem descrever a quantidade de parâmetros que um comando possuirá, além disso, cada metadado define como os 
+	  argumentos do comando serão coletados, ou seja, caso hajam argumentos opcionais basta que os mesmos sejam tratados.
+	  
+	  Foi possível realizar a execução de vários comandos em conjunto, uma vez que o módulo \textit{CommandChecker} se encarrega 
+	  de identificar os comandos enviados, validá-los e adicioná-los à fila de execução.
+	  
+	  Não ocorreram problemas ao executar os comandos \textit{init} e \textit{help} em um projeto vazio e no SiGA. 
+	  
+      
       \subsection{Melhorias identificadas}
+	  Com todas as dificuldades encontradas durante a avaliação, percebeu-se que seria interessante embutir no comando 
+	  \textit{\textbf{init}} todas as configurações realizadas manualmente, para que novos usuários não tenham tais problemas.
     
 
 \chapter{Ciclo 2}
