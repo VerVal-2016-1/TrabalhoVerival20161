@@ -166,7 +166,9 @@
 	
 	\item Arquitetura do \textit{framework} estabelecida;
 	
-	\item Comando \textit{\textbf{init}}, para automatizar parte da configuração.
+	\item Comando \textit{\textbf{init}}, para automatizar parte da configuração;
+	
+	\item Comando \textit{\textbf{help}}, para exibição e descrição das funcionalidades do \textit{framework}.
 
       \end{itemize}
 
@@ -190,23 +192,28 @@
 	  No sistema SiGA foram identificados os mesmos erros referentes às configurações.
       
       \subsection{Avaliação da arquitetura}
-	  Percebeu-se que a arquitetura do \textit{framework} foi bem estrutura com o uso do padrão de projeto \textit{Command}, 
-	  uma vez que facilmente é possivel criar novos comandos definindo-se uma classe para o mesmo e adicionando-o aos comandos
-	  existentes.
+      
+	  Percebeu-se que a arquitetura do \textit{framework} foi bem estruturada com o uso do padrão de projeto \textit{Command}, 
+	  uma vez que facilmente foi possivel criar novos comandos definindo-se uma classe para o mesmo e adicionando-o aos comandos
+	  existentes, bem como criando sua respectiva classe de metadados.
 	  
-	  A criação de um comando com parâmetros diferentes foi identificada e possível graças aos metadados vinculados ao mesmo, 
+	  A criação de um comando com parâmetros diferentes foi identificada e possível graças aos metadados vinculados ao comando, 
 	  os quais podem descrever a quantidade de parâmetros que um comando possuirá, além disso, cada metadado define como os 
-	  argumentos do comando serão coletados, ou seja, caso hajam argumentos opcionais basta que os mesmos sejam tratados.
+	  argumentos do comando serão coletados, ou seja, caso hajam argumentos opcionais basta que os mesmos sejam tratados na 
+	  respectiva classe de metadado.
 	  
 	  Foi possível realizar a execução de vários comandos em conjunto, uma vez que o módulo \textit{CommandChecker} se encarrega 
 	  de identificar os comandos enviados, validá-los e adicioná-los à fila de execução.
 	  
-	  Não ocorreram problemas ao executar os comandos \textit{init} e \textit{help} em um projeto vazio e no SiGA. 
+	  No geral, a arquitetura proposta se mostrou eficaz e extensível, encaixando adequadamente para o contexto.
+	  Em relação ao teste dos comandos implementados, não ocorreram problemas ao executar os comandos \textit{init} e
+	  \textit{help} em um projeto vazio e nem no SiGA.
 	  
       
       \subsection{Melhorias identificadas}
 	  Com todas as dificuldades encontradas durante a avaliação, percebeu-se que seria interessante embutir no comando 
-	  \textit{\textbf{init}} todas as configurações realizadas manualmente, para que novos usuários não tenham tais problemas.
+	  \textit{\textbf{init}} todas as configurações realizadas manualmente, para que novos usuários não tenham os mesmos 
+	  problemas encontrados e descritos aqui.
     
 
 \chapter{Ciclo 2}
