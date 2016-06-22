@@ -209,11 +209,11 @@
 	  Em relação ao teste dos comandos implementados, não ocorreram problemas ao executar os comandos \textit{init} e
 	  \textit{help} em um projeto vazio e nem no SiGA.
 	  
-      
-      \subsection{Melhorias identificadas}
-	  Com todas as dificuldades encontradas durante a avaliação, percebeu-se que seria interessante embutir no comando 
-	  \textit{\textbf{init}} todas as configurações realizadas manualmente, para que novos usuários não tenham os mesmos 
-	  problemas encontrados e descritos aqui.
+
+    \subsection{Melhorias identificadas}
+	   Com todas as dificuldades encontradas durante a avaliação, percebeu-se que seria interessante embutir no comando 
+	   \textit{\textbf{init}} todas as configurações realizadas manualmente, para que novos usuários não tenham tais problemas. Outra melhoria foi o acréscimento do argumento 
+     \textit{-force} para que as configurações fossem realizadas novamente, caso o desenvolvedor quisesse reiniciar as configurações do \textit{framework}.
     
 
 \chapter{Ciclo 2}
@@ -249,7 +249,16 @@
     
     \end{itemize}
 
+    \subsection{Planejamento da avaliação}
+
+     Para assegurar a viabilidade do uso do \textit{Ignitest} (\textit{framework} proposto), foi elaborado pelos autores, um questionário a ser respondido pelos testadores responsáveis pela avaliação.
+    
+      O questionário, que pode ser visto no Apêndice \ref{questionario}, está dividido nas categorias: Documentação, Resultados (propõe comparações entre a criação de testes usando apenas a classe de testes padrão do \textit{CodeIgniter}, aqui chamado de método padrão, e o \textit{Ignitest}) e \textit{Feedback}.
+
+
   \section{Execução do ciclo}
+
+    Nesta seção está descrita a execução do ciclo de acordo com as atividades planejadas.
       
     \subsection{Classe base para testes unitários}
 
@@ -423,10 +432,25 @@
 
     Para avaliar os resultados deste ciclo dois desenvolvedores do SiGA realizaram testes para uma classe utilizando o método padrão de implementação do CodeIgniter e o \textit{framework}. Após a implementação os desenvolvedores responderam a um questionário, que pode ser visto no Apêndice \ref{questionario}. 
 
-    Considerando as respostas dos desenvolvedores foi possível perceber que
+    Considerando as respostas dos desenvolvedores foi possível perceber que o tempo de implementação de testes diminuiu mais que a metade em relação ao tempo para o método padrão. A avaliação também mostrou a diminuição considerável das linhas de código e da melhoria do processo de teste, principalmente em relação aos passos necessários para testar uma classe. Obteve-se uma melhoria relacionada à duplicação de código e à experiência de realizar testes no CodeIgniter. 
   
+    Na implementação dos testes foi percebido que o método \textit{setUp} da classe base de teste unitário deveria ser substituído pelo método \textit{beforeClass}, pois só havia a necessidade
+    de ser executado uma vez. Para os testes de integração deparou-se com um problema ao testar métodos que comunicavam com a \textit{view}, pois estes implementam redirecionamento de páginas. 
+    O PHPUnit não é capaz de testar este redirecionamento, assim seria necessário criar um \textit{mock} para definir as respostas desses redirecionamentos. 
+
     \subsection{Melhorias identificadas}
     
+    Neste ciclo foram identificadas as seguintes melhorias:
+
+    \begin{enumerate}
+
+      \item Criação de um executável para o \textit{framework}, para facilitar a instalação e o uso;
+      \item Criação de um comando para criar todas as classes de teste de uma vez;
+      \item Substituição do método \textit{setUp} para o método \textit{beforeClass};
+      \item Criação de \textit{mock} para os redirecionamentos nos testes de integração.
+
+    \end{enumerate}
+
 \chapter{Ciclo 3...n}
   
   O tempo para a realização do trabalho não permitiu a execução de mais de um
