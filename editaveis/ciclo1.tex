@@ -253,10 +253,12 @@
       
     \subsection{Classe base para testes unitários}
 
-        Foi implementada uma classe base, chamada \textbf{UnitCaseTest}, que deve ser herdada de todas as classes de teste de integração criadas. 
+        Foi implementada uma classe base, chamada \textbf{UnitCaseTest}, que deve ser herdada por todas as classes de teste unitário criadas. 
         Essa classe base herda da classe \textbf{PHPUnit\_Framework\_TestCase}. Sendo assim as classes de teste unitário criadas através do \textit{framework} herdam as funcionalidades do PHPUnit e a funcionalidade proposta para a classe base.
 
-        Para a classe base a proposta é reconhecer a classe de domínio que será testada, verificando sua existência e já disponibilizando-a para uso (importando) na classe de testes. No código apresentado abaixo, o método \textit{class\_under\_test} é responsável por identificar a classe a ser testada e importá-la. No método \textit{search\_class\_file} é verificada a existência da classe que o desenvolvedor deseja testar. O método \textit{setUp} será executado antes da execução de cada teste e pode ser sobreescrito nas classes de teste criadas, contanto que também execute o método da classe base.  
+        Para a classe base a proposta é reconhecer a classe de domínio que será testada, verificando sua existência e já disponibilizando-a para uso (importando) na classe de testes. No código apresentado abaixo, o método \textit{class\_under\_test} é responsável por identificar a classe a ser testada e importá-la. No método \textit{search\_class\_file} é verificada a existência da classe que o desenvolvedor deseja testar. O método \textit{setUp} será executado antes da execução de cada teste e pode ser sobreescrito nas classes de teste criadas, contanto que também execute o método da classe base.
+        É disponibilizada uma instância do super-objeto do CodeIgniter para todas as classes de teste pelo atributo \textbf{'\$ci'},
+        para permitir a utilização dos recursos do CodeIgniter nos testes.
 
         \begin{lstlisting}
             <?php
@@ -266,7 +268,6 @@
             abstract class UnitCaseTest extends PHPUnit_Framework_TestCase{
 
                 protected $ci;
-                protected $testClass;
 
                 private function class_under_test($child){
                     $className = get_class($child);
@@ -310,7 +311,7 @@
 
     \subsection{Classe base para testes de integração}
 
-        Para o \textit{Ignitest} foi criada uma classe base chamada \textbf{IntegrationTestCase} que deve ser herdada de todas as classes de teste unitário criadas. 
+        Para o \textit{Ignitest} foi criada uma classe base chamada \textbf{IntegrationTestCase} que deve ser herdada por todas as classes de teste de integração criadas. 
         Essa classe base herda da classe \textbf{PHPUnit\_Extensions\_Database\_TestCase}. Sendo assim as classes de teste de integração criadas através do \textit{framework} herdam as funcionalidades do PHPUnit e a funcionalidade proposta para a classe base.
 
         Para a classe base a proposta é reconhecer a \textit{controller} que será testada, verificando sua existência e já disponibilizando-a para uso (importando) na classe de testes. No código apresentado abaixo, o método \textit{class\_under\_test} é responsável por identificar a classe a ser testada e importá-la. No método \textit{search\_class\_file} é verificada a existência da classe que o desenvolvedor deseja testar. O método \textit{setUp} será executado antes da execução de cada teste e pode ser sobreescrito nas classes de teste criadas, contanto que também execute o método da classe base. Além de importar a classe que está sendo testada, a classe do \textit{Ignitest} também já cria e disponibiliza a instância da classe.
@@ -390,13 +391,69 @@
               }
             }
     \end{lstlisting}
+    
+    Além dos métodos de identificação das classes sob teste, é possível ver que foram definidos dois outros métodos:
+    \textit{getConnection()} e \textit{getDataSet()}. Ambos os métodos são herdados do PHPUnit e servem para lidar com 
+    o banco de testes. O método \textit{getConnection()} serve para criar uma conexão com o banco de teste e disponibilizar
+    para a classe de teste. O método \textit{getDataSet()} serve para informar ao PHPUnit qual o estado do banco de testes
+    que deve ser restaurado a cada teste, onde será carregado o estado do banco a partir de um arquivo XML, no caso.
+    
+    Como era necessário os dados do MySQL para conexão com o banco de testes e esses dados deveriam vir do usuário, foi criado
+    um arquivo de configuração para o Ignitest chamado de \textit{\textbf{config\_ignitest.php}}, onde seriam armazenados os dados
+    do banco de teste MySQL do usuário, cujos dados seriam informados por este. Além dos dados do banco de teste, também foram 
+    armazenados neste arquivo os dados dos caminhos das pastas das classes de \textit{controllers} e \textit{domains}. 
+    A criação deste arquivo também foi embutida no comando \textit{\textbf{init}} do \textit{framework}.
+    O conteúdo deste arquivo é bem detalhado no repositório do Ignitest \footnotemark.
+    \footnotetext{Configurando o Ignitest - \url{https://github.com/VerVal-2016-1/Ignitest\#configuring}}
+    
+	\subsubsection{Sincronização dos bancos de dados}
+	    
+	    Um problema que surgiu durante a criação da classe base para teste de integração foi o de sincronização do banco de 
+	    testes com o PHPUnit e o CodeIgniter. O PHPUnit se comunica com o banco de dados através da abstração PDO\footnotemark do PHP
+	    pelo método \textit{getConnection()}, já o CodeIgniter possui a comunicação com o banco de dados embutida dentro do \textit{core}
+	    do \textit{framework} utilizando a abstração definida pelo usuário no arquivo de configuração
+	    \textit{\textbf{/application/config/database.php}}. 
+	    \footnotetext{Classe PDO do PHP - Disponível em \url{http://php.net/manual/pt_BR/class.pdo.php}. Acesso em 21/06/2016.}
+	    
+	    O problema é que ao iniciar o PHPUnit, o CodeIgniter não sabe que deve executar os métodos no banco de testes.
+	    Para resolver esse problema, foi incluído o seguinte código no arquivo \textit{\textbf{/application/config/database.php}}:
+	    
+	    \begin{lstlisting}
+	    
+            $active_group = 'default';
+            
+            ...
+	    
+            if(ENVIRONMENT === "testing"){
+                $active_group .= '_test';
+            }
+            
+            $db['default_test']['hostname'] = 'host';
+            $db['default_test']['username'] = '';
+            $db['default_test']['password'] = '';
+            $db['default_test']['database'] = 'test_database_name';
+            $db['default_test']['dbdriver'] = 'database_abstraction';
+            $db['default_test']['dbprefix'] = '';
+            $db['default_test']['pconnect'] = TRUE;
+            $db['default_test']['db_debug'] = TRUE;
+            $db['default_test']['cache_on'] = FALSE;
+            $db['default_test']['cachedir'] = '';
+            $db['default_test']['char_set'] = 'utf8';
+            $db['default_test']['dbcollat'] = 'utf8_general_ci';
+            $db['default_test']['swap_pre'] = '';
+            $db['default_test']['autoinit'] = TRUE;
+            $db['default_test']['stricton'] = FALSE;
+            
+	    \end{lstlisting}
 
-%       % Sincronização dos banco de dados.
+	    Ao iniciar o PHPUnit o ambiente é definido como de teste no arquivo de inicialização \textit{\textbf{bootstrap.php}}.
+	    Dessa forma, no CodeIgniter seria verificado se o ambiente atual é de teste e, caso seja, seria executado o banco de
+	    testes ao invés do banco convencional, resolvendo o problema da sincronização dos bancos de dados.
 
     \subsection{Criação dos comandos}
 
         Foram criados dois comandos para criação das classes de teste, um para criar a classe de teste unitário e outra para a de integração, seguindo a arquitetura 
-        proposta no ciclo 1, através do padrão de projeto \textit{Command}. 
+        proposta no ciclo 1, através do padrão de projeto \textit{Colocalhostmmand}. 
 
         O comando \textit{create\_unit <class name>} cria uma classe de teste unitário para a classe passada como argumento no comando, caso esta classe de domínio exista. Esta classe de teste herda da classe base \textbf{UnitCaseTest} e dessa forma importa a classe de domínio que está sendo testada.
 
@@ -404,7 +461,6 @@
 
         Quando a classe passada como argumento para ambos os comandos já possui uma classe de teste associada, para criar novamente e substituir o código escrito foi acrescentado ao comando o argumento opcional \textit{-force} ou \textit{-f}. 
 
-  
   \section{Resultados obtidos}
       
     \begin{itemize}
@@ -415,7 +471,9 @@
             
       \item Comando \textit{\textbf{create\_unit}}, para criar classe de teste unitário;
 
-      \item Comando \textit{\textbf{create\_integration}}, para criar classe de teste de integração.
+      \item Comando \textit{\textbf{create\_integration}}, para criar classe de teste de integração;
+      
+      \item Comando \textit{\textbf{init}} incrementado para incluir o arquivo \textit{\textbf{config_ignitest.php}}.
 
     \end{itemize}
   
