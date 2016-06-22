@@ -9,56 +9,56 @@
       sua arquitetura de funcionamento. Portanto, ficaram definidas como escopo do primeiro ciclo as seguintes atividades:
       
       \begin{itemize}
-	
-	\item Configurar o CodeIgniter para receber o PHPUnit;
-	
-	\item Estabelecer arquitetura de funcionamento do \textit{framework}.
-	
+    
+    \item Configurar o CodeIgniter para receber o PHPUnit;
+    
+    \item Estabelecer arquitetura de funcionamento do \textit{framework}.
+    
       \end{itemize}
       
       
       \subsection{Planejamento da avaliação}
       
-	  Como este ciclo não agregou muito valor para a atividade de testes dos desenvolvedores do SiGA,
-	  embora imprescindível para o \textit{framework}, o mesmo teve uma forma de avaliação diferente
-	  dos outros ciclos (não avaliado pelo questionário proposto) por não envolver diretamente os desenvolvedores e se
-	  tratar de conteúdo mais técnico inerente à equipe de desenvolvimento do \textit{framework}. Visto isso, ficou proposta
-	  a seguinte estrutura de avaliação para as atividades realizadas neste ciclo:
-	  
-	  \begin{itemize}
-	  
-	    \item Para a atividade de configuração do CodeIgniter para o uso do PHPUnit:
-	  
-		\begin{enumerate}
-	      
-		  \item Testar as configurações propostas em um projeto vazio do CodeIgniter versão 2.x;
-		  
-		  \item Testar as configurações propostas no SiGA;
-		  
-		\end{enumerate}
-	      
-	    \item Para a atividade de estabelecimento da arquitetura de funcionamento do \textit{framework}:
-		
-		\begin{enumerate}
-	
-		  \item Validar a arquitetura proposta implementando os comandos \textit{\textbf{init}} e \textit{\textbf{help}};
-		      
-		      \subitem Se atentar aos seguintes itens indispensáveis:
-			\begin{itemize}
-			  \item É fácil de se criar um novo comando?
-			  \item É possível criar um comando com parâmetros diferentes?
-			  \item É possível ter parâmetros opcionais nos comandos?
-			  \item É possível tratar cada comando individualmente e executá-los em conjunto?
-			\end{itemize}
-		  
-		  \item Testar o comando \textit{\textbf{init}} em um projeto vazio do CodeIgniter versão 2.x;
-		  
-		  \item Testar o comando \textit{\textbf{init}} no SiGA;
-	
-		  \item Testar o comando \textit{\textbf{help}};
-		\end{enumerate}
-	  
-	  \end{itemize}
+      Como este ciclo não agregou muito valor para a atividade de testes dos desenvolvedores do SiGA,
+      embora imprescindível para o \textit{framework}, o mesmo teve uma forma de avaliação diferente
+      dos outros ciclos (não avaliado pelo questionário proposto) por não envolver diretamente os desenvolvedores e se
+      tratar de conteúdo mais técnico inerente à equipe de desenvolvimento do \textit{framework}. Visto isso, ficou proposta
+      a seguinte estrutura de avaliação para as atividades realizadas neste ciclo:
+      
+      \begin{itemize}
+      
+        \item Para a atividade de configuração do CodeIgniter para o uso do PHPUnit:
+      
+        \begin{enumerate}
+          
+          \item Testar as configurações propostas em um projeto vazio do CodeIgniter versão 2.x;
+          
+          \item Testar as configurações propostas no SiGA;
+          
+        \end{enumerate}
+          
+        \item Para a atividade de estabelecimento da arquitetura de funcionamento do \textit{framework}:
+        
+        \begin{enumerate}
+    
+          \item Validar a arquitetura proposta implementando os comandos \textit{\textbf{init}} e \textit{\textbf{help}};
+              
+              \subitem Se atentar aos seguintes itens indispensáveis:
+            \begin{itemize}
+              \item É fácil de se criar um novo comando?
+              \item É possível criar um comando com parâmetros diferentes?
+              \item É possível ter parâmetros opcionais nos comandos?
+              \item É possível tratar cada comando individualmente e executá-los em conjunto?
+            \end{itemize}
+          
+          \item Testar o comando \textit{\textbf{init}} em um projeto vazio do CodeIgniter versão 2.x;
+          
+          \item Testar o comando \textit{\textbf{init}} no SiGA;
+    
+          \item Testar o comando \textit{\textbf{help}};
+        \end{enumerate}
+      
+      \end{itemize}
   
   \section{Execução do ciclo}
   
@@ -155,18 +155,18 @@
 	  CodeIgniter e, portanto, parte dessa configuração, as configurações essenciais do PHPUnit, foi abstraída para
 	  dentro do \textit{framework} no comando \textit{\textbf{init}}, para diminuir a carga de configuração
 	  para o desenvolvedor.
-  
+ 
   \section{Resultados obtidos}
     
       Este ciclo produziu os seguintes resultados:
       
       \begin{itemize}
 
-	\item Configuração do PHPUnit ao CodeIgniter estabelecida;
-	
-	\item Arquitetura do \textit{framework} estabelecida;
-	
-	\item Comando \textit{\textbf{init}}, para automatizar parte da configuração.
+    \item Configuração do PHPUnit ao CodeIgniter estabelecida;
+    
+    \item Arquitetura do \textit{framework} estabelecida;
+    
+    \item Comando \textit{\textbf{init}}, para automatizar parte da configuração.
 
       \end{itemize}
 
@@ -215,30 +215,208 @@
   
   \section{Planejamento}
   
-      Para compor o escopo do segundo ciclo ficaram alocadas as seguintes funcionalidades, com suas respectivas características:
+    Para compor o escopo do segundo ciclo ficaram alocadas as seguintes funcionalidades, com suas respectivas características:
+    
       
-     \begin{itemize}
-      \item \textbf{Criação da classe base para testes unitários;}
-	\begin{itemize}
-	  \item Reconhecimento da classe que está sendo testada por convenção de nomenclatura;
-	\end{itemize}
+    \begin{itemize}
+      
+        \item \textbf{Criação da classe base para testes unitários;}
+    
+            \begin{itemize}
+              \item Reconhecimento da classe que está sendo testada por convenção de nomenclatura;
 
-      \item \textbf{Classe base para testes de integração.}
-	\begin{itemize}
-	  \item Reconhecimento da classe que está sendo testada por convenção de nomenclatura;
-	  \item Esquema de criação e destruição do banco de testes;
-	  \item Definição de dados iniciais no banco de testes;
-	\end{itemize}
-      \end{itemize}
+            \end{itemize}
+     
+        \item \textbf{Classe base para testes de integração.}
+    
+            \begin{itemize}
+              \item Reconhecimento da classe que está sendo testada por convenção de nomenclatura;
+              \item Esquema de criação e destruição do banco de testes;
+              \item Definição de dados iniciais no banco de testes;
+            
+            \end{itemize}
+    
+        \item Criação do comando \textit{\textbf{create\_unit}}, para automatizar a criação da classe de teste para teste unitário de \textit{domains}.
+        
+        \item Criação do comando \textit{\textbf{create\_integration}}, para automatizar a criação da classe de teste para teste de integração de \textit{controllers}.
+    
+    \end{itemize}
 
   \section{Execução do ciclo}
       
-      Sincronização dos banco de dados.
+    \subsection{Classe base para testes unitários}
+
+        Foi implementada uma classe base, chamada \textbf{UnitCaseTest}, que deve ser herdada de todas as classes de teste de integração criadas. 
+        Essa classe base herda da classe \textbf{PHPUnit\_Framework\_TestCase}. Sendo assim as classes de teste unitário criadas através do \textit{framework} herdam as funcionalidades do PHPUnit e a funcionalidade proposta para a classe base.
+
+        Para a classe base a proposta é reconhecer a classe de domínio que será testada, verificando sua existência e já disponibilizando-a para uso (importando) na classe de testes. No código apresentado abaixo, o método \textit{class\_under\_test} é responsável por identificar a classe a ser testada e importá-la. No método \textit{search\_class\_file} é verificada a existência da classe que o desenvolvedor deseja testar. O método \textit{setUp} será executado antes da execução de cada teste e pode ser sobreescrito nas classes de teste criadas, contanto que também execute o método da classe base.  
+
+        \begin{lstlisting}
+            <?php
+
+            require_once APPPATH.'/tests/ignitest/src/exception/TestException.php';
+
+            abstract class UnitCaseTest extends PHPUnit_Framework_TestCase{
+
+                protected $ci;
+                protected $testClass;
+
+                private function class_under_test($child){
+                    $className = get_class($child);
+
+                    $name = str_replace("Test", "", $className);
+                    $capitalizeName = ucfirst($name);
+
+                    $file_path = $this->search_class_file($capitalizeName);
+
+                    if (!empty($file_path)) {
+                        require_once $file_path;
+                    }
+                    else{
+                        throw new TestException("File could not be found", 0);
+                    }
+                }
+
+                public function search_class_file($class_name){
+                    $file_path = "";
+
+                    $it = new RecursiveDirectoryIterator(DOMAINPATH);
+                    foreach (new RecursiveIteratorIterator($it) as $file) {
+                        $file_name = $file->getFileName();
+                        if($file_name == $class_name.".php"){
+                            $file_path = $file->getPathName();
+                            break; 
+                        }
+                    }
+
+                    return $file_path;
+                }
+                
+                public function setUp() {   
+
+                    $this->classUnderTest($this);
+                    $this->ci =& get_instance();
+                }
+            }
+
+        \end{lstlisting}
+
+    \subsection{Classe base para testes de integração}
+
+        Para o \textit{Ignitest} foi criada uma classe base chamada \textbf{IntegrationTestCase} que deve ser herdada de todas as classes de teste unitário criadas. 
+        Essa classe base herda da classe \textbf{PHPUnit\_Extensions\_Database\_TestCase}. Sendo assim as classes de teste de integração criadas através do \textit{framework} herdam as funcionalidades do PHPUnit e a funcionalidade proposta para a classe base.
+
+        Para a classe base a proposta é reconhecer a \textit{controller} que será testada, verificando sua existência e já disponibilizando-a para uso (importando) na classe de testes. No código apresentado abaixo, o método \textit{class\_under\_test} é responsável por identificar a classe a ser testada e importá-la. No método \textit{search\_class\_file} é verificada a existência da classe que o desenvolvedor deseja testar. O método \textit{setUp} será executado antes da execução de cada teste e pode ser sobreescrito nas classes de teste criadas, contanto que também execute o método da classe base. Além de importar a classe que está sendo testada, a classe do \textit{Ignitest} também já cria e disponibiliza a instância da classe.
+
+        \begin{lstlisting}
+            <?php
+
+            include "config_ignitest.php";
+
+            abstract class IntegrationTestCase extends PHPUnit_Extensions_Database_TestCase{
+
+              static private $pdo = null;
+              private $conn = null;
+
+              protected $ci;
+                protected $testClass;
+
+                /**
+                 * @Override
+                 */
+              final public function getConnection(){
+                if ($this->conn === null) {
+                  if (self::$pdo == null) {
+                    $pdo_data = "mysql:dbname=".DATABASE_NAME.";host=".HOST;
+                    self::$pdo = new PDO($pdo_data, USERNAME, PASSWORD);
+                  }
+
+                  $this->conn = $this->createDefaultDBConnection(self::$pdo, DATABASE_NAME);
+                }
+                return $this->conn;
+              }
+
+              /**
+                 * @Override
+                 */
+              public function getDataSet(){
+                return $this->createMySQLXMLDataSet(DATASET);
+              }
+
+              private function classUnderTest($child){
+                    $className = get_class($child);
+
+                    $name = str_replace("Test", "", $className);
+
+                    $file_path = $this->search_class_file($name);
+
+                    if (!empty($file_path)) {
+                        require_once $file_path;
+
+                        $name = ucfirst($name);
+                        $this->testClass = new $name();
+                    }
+                    else{
+                        throw new TestException("File could not be found", 0);
+                    }
+                }
+
+                private function search_class_file($class_name){
+                    $file_path = "";
+
+                    $it = new RecursiveDirectoryIterator(CONTROLLERPATH);
+                    foreach (new RecursiveIteratorIterator($it) as $file) {
+                        $file_name = $file->getFileName();
+                        if($file_name == strtolower($class_name).".php" || $file_name == ucfirst($class_name).".php"){
+                            $file_path = $file->getPathName();
+                            break; 
+                        }
+                    }
+
+                    return $file_path;
+                }
+
+              public function setUp(){
+                parent::setUp();
+                $this->classUnderTest($this);
+                    $this->ci =& get_instance();
+              }
+            }
+    \end{lstlisting}
+
+      % Sincronização dos banco de dados.
+
+    \subsection{Criação dos comandos}
+
+        Foram criados dois comandos para criação das classes de teste, um para criar a classe de teste unitário e outra para a de integração, seguindo a arquitetura 
+        proposta no ciclo 1, através do padrão de projeto \textit{Command}. 
+
+        O comando \textit{create\_unit <class name>} cria uma classe de teste unitário para a classe passada como argumento no comando, caso esta classe de domínio exista. Esta classe de teste herda da classe base \textbf{UnitCaseTest} e dessa forma importa a classe de domínio que está sendo testada.
+
+        O comando \textit{create\_integration <class sname>} cria uma classe de teste de integração para a classe passada como argumento no comando, caso esta classe \textit{controller} exista. Esta classe de teste herda da classe base \textbf{IntegrationTestCase} e dessa forma importa a \textit{controller} que está sendo testada e cria uma instância desta.
+
+        Quando a classe passada como argumento para ambos os comandos já possui uma classe de teste associada, para criar novamente e substituir o código escrito foi acrescentado ao comando o argumento opcional \textit{-force} ou \textit{-f}. 
+
   
   \section{Resultados obtidos}
-  
+      
+    \begin{itemize}
+
+      \item Classe base de teste unitário criada, com reconhecimento da classe de domínio a ser testada;
+      
+      \item Classe base de teste de integração criada, com reconhecimento e instância da \textit{controller} que está sendo testada;
+            
+      \item Comando \textit{\textbf{create\_unit}}, para criar classe de teste unitário;
+
+      \item Comando \textit{\textbf{create\_integration}}, para criar classe de teste de integração.
+
+    \end{itemize}
   
   \section{Avaliação dos resultados}
+
+    Para avaliar os resultados deste ciclo dois desenvolvedores do SiGA realizaram testes para uma classe utilizando o método padrão de implementação do CodeIgniter e o \textit{framework}. Após a implementação os desenvolvedores responderam a um questionário, que pode ser visto no Apêndice \ref{questionario}. 
+
+    Considerando as respostas dos desenvolvedores foi possível perceber que
   
     \subsection{Melhorias identificadas}
     
