@@ -216,6 +216,7 @@
 	   Com todas as dificuldades encontradas durante a avaliação, percebeu-se que seria interessante embutir no comando 
 	   \textit{\textbf{init}} todas as configurações realizadas manualmente, para que novos usuários não tenham tais problemas. Outra melhoria foi o acréscimento do argumento 
      \textit{-force} para que as configurações fossem realizadas novamente, caso o desenvolvedor quisesse reiniciar as configurações do \textit{framework}.
+     Para a instalação mais simples do \textit{framework} também é sugerido o empacotamento do \textit{Ignitest}.
     
 
 \chapter{Ciclo 2}
@@ -248,7 +249,9 @@
         \item Criação do comando \textit{\textbf{create\_unit}}, para automatizar a criação da classe de teste para teste unitário de \textit{domains}.
         
         \item Criação do comando \textit{\textbf{create\_integration}}, para automatizar a criação da classe de teste para teste de integração de \textit{controllers}.
-    
+      
+        \item Incremento do comando de \textit{\textbf{init} para copiar as classes bases para o projeto.}
+
     \end{itemize}
 
     \subsection{Planejamento da avaliação}
@@ -470,7 +473,9 @@
 
         O comando \textit{create\_integration <class sname>} cria uma classe de teste de integração para a classe passada como argumento no comando, caso esta classe \textit{controller} exista. Esta classe de teste herda da classe base \textbf{IntegrationTestCase} e dessa forma importa a \textit{controller} que está sendo testada e cria uma instância desta.
 
-        Quando a classe passada como argumento para ambos os comandos já possui uma classe de teste associada, para criar novamente e substituir o código escrito foi acrescentado ao comando o argumento opcional \textit{-force} ou \textit{-f}. 
+        Quando a classe passada como argumento para ambos os comandos já possui uma classe de teste associada, para criar novamente e substituir o código escrito foi acrescentado ao comando o argumento opcional \textit{-force} ou \textit{-f}.  
+
+        O comando \textit{init} foi incrementado para que acrescentasse ao projeto as classes base.
 
   \section{Resultados obtidos}
       
@@ -507,11 +512,12 @@
       \item Criação de um executável para o \textit{framework}, para facilitar a instalação e o uso;
       \item Criação de um comando para criar todas as classes de teste de uma vez;
       \item Substituição do método \textit{setUp} para o método \textit{beforeClass};
-      \item Criação de \textit{mock} para os redirecionamentos nos testes de integração.
+      \item Criação de \textit{mock} para os redirecionamentos nos testes de integração;
+      \item Fazer carregamento automático das classes do \textit{framework}.
 
     \end{enumerate}
 
-\chapter{Ciclo 3...n}
+\chapter{Ciclo 3..n}
   
   O tempo para a realização do trabalho não permitiu a execução de mais de um
   ciclo,embora o planjemento inicial tenha previsto mais de um ciclo. Todavia, sabe-se que o escopo dos próximos
